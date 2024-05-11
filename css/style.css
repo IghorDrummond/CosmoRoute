@@ -1,0 +1,46 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+/* Selection da Página */
+main{
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	z-index: 1;
+}
+section{
+	box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.2);
+}
+section h1{
+	background-image: linear-gradient(to top, gray, #ffff); 
+	background-clip: text;
+	-webkit-background-clip: text; 
+	color: transparent; 
+	animation: 5s texto_aparece;
+}
+/* Quadro 3D */
+#fundo{
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	z-index: 0;
+}
+
+/* Hover */
+
+/* Animações */
+@keyframes texto_aparece{
+	from{
+		opacity: 0;
+	}to{
+		opacity: 1;
+	}
+}
+@keyframes titulo_desaparece{
+	from{
+		opacity: 1;
+	}to{
+		opacity: 0;
+	}
+}
