@@ -11,6 +11,9 @@ var terraTextura = null;
 var terraGeometria = null;
 var terraMaterial = null;
 var terra = null;
+var nuvens = null;
+var oceanos = null;
+var profundidade = null;
 var luz = null;
 var dirLuz = null;
 //Elementos
@@ -119,10 +122,12 @@ function introducao(){
 
 	var Z = setTimeout(()=>{
 		clearTimeout(Z);
-		Section[0].style.display = 'none';
+		Section[0].classList.remove("d-flex");
+		Section[0].classList.add("d-none");
 		Titulo[0].style.display = 'none';
 		darZoom(20);
 	}, 2000);
+
 }
 /*
 *Função: darZoom(valor inicial do Zoom aplicado)
@@ -133,7 +138,47 @@ function introducao(){
 function darZoom(nCont){
 	var Y = setInterval(()=>{
 		nCont -= 0.1;
-		nCont >= 2 ? nCont-- : clearInterval(Y);
+		if(nCont > 2){
+			nCont--;
+		}else{
+			clearInterval(Y);
+			Section[1].style.display = 'block';
+		}
 		camera.position.z = nCont;
 	}, 55);
 }
+
+/*
+* Função: configuracao3D()
+* Descrição: Responsável por criar, texturizar e modelar o planeta Terra 3D
+* Programador(a): Ighor Drummond
+* Data: 11/05/2024
+FUTURA ATT PARA MAIS DETALHES DE TEXTURA NA TERRA, APENAS ESTOU MANIPULANDO E TESTANDO AINDA
+function configuracao3D(){
+    // Adicionando a Textura para o Planeta Terra 
+    terraTextura = new THREE.TextureLoader().load('img/terra.jpg'); // Textura da terra
+    var nuvensTextura = new THREE.TextureLoader().load('img/nuvens.png'); // Textura das nuvens
+    var oceanosTextura = new THREE.TextureLoader().load('img/oceanos.jpg'); // Textura dos oceanos
+    var profundidadeTextura = new THREE.TextureLoader().load('img/profundidade.jpg'); // Textura de profundidade
+
+    // Adiciona os materiais com suas respectivas texturas
+    var terraMaterial = new THREE.MeshBasicMaterial({map: terraTextura});
+    var nuvensMaterial = new THREE.MeshBasicMaterial({map: nuvensTextura, transparent: true, opacity: 0.4}); // Opacidade ajustável
+    var oceanosMaterial = new THREE.MeshBasicMaterial({map: oceanosTextura});
+    var profundidadeMaterial = new THREE.MeshBasicMaterial({map: profundidadeTextura});
+
+    // Adiciona as geometrias
+    terraGeometria = new THREE.SphereGeometry(1.02, 32, 32); // Aumentei o raio para que as texturas não fiquem coladas à esfera
+    var nuvensGeometria = new THREE.SphereGeometry(1.03, 32, 32);
+    var oceanosGeometria = new THREE.SphereGeometry(1.02, 32, 32);
+    var profundidadeGeometria = new THREE.SphereGeometry(1.02, 32, 32);
+
+    // Cria os meshes para cada parte do planeta
+    terra = new THREE.Mesh(terraGeometria, terraMaterial);
+    var nuvens = new THREE.Mesh(nuvensGeometria, nuvensMaterial);
+    var oceanos = new THREE.Mesh(oceanosGeometria, oceanosMaterial);
+    var profundidade = new THREE.Mesh(profundidadeGeometria, profundidadeMaterial);
+
+    // Adiciona cada parte do planeta à cena
+    cena.add(terra, nuvens, oceanos, profundidade);
+}*/

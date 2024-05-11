@@ -2,22 +2,40 @@
 	padding: 0;
 	margin: 0;
 }
-/* Selection da Página */
 main{
 	width: 100vw;
 	height: 100vh;
 	position: absolute;
 	z-index: 1;
 }
-section{
-	box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.2);
-}
+/* Primeira Selection da Página */
 section h1{
+	background-image: -webkit-gradient(linear, left bottom, left top, from(gray), to(#ffff));
+	background-image: -o-linear-gradient(bottom, gray, #ffff);
 	background-image: linear-gradient(to top, gray, #ffff); 
 	background-clip: text;
 	-webkit-background-clip: text; 
 	color: transparent; 
-	animation: 5s texto_aparece;
+	-webkit-animation: 5s texto_aparece; 
+	        animation: 5s texto_aparece;
+}
+/* Segunda Selection da Página */
+section:nth-child(2){
+	display: none;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    -webkit-backdrop-filter: blur(55px);
+            backdrop-filter: blur(55px);
+	width: 50%;
+	height: 50%;
+	-webkit-animation: 2s texto_aparece;
+	        animation: 2s texto_aparece;
+	color: white;
+	text-align: center;
+	padding: 25px;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 }
 /* Quadro 3D */
 #fundo{
@@ -30,11 +48,25 @@ section h1{
 /* Hover */
 
 /* Animações */
+@-webkit-keyframes texto_aparece{
+	from{
+		opacity: 0;
+	}to{
+		opacity: 1;
+	}
+}
 @keyframes texto_aparece{
 	from{
 		opacity: 0;
 	}to{
 		opacity: 1;
+	}
+}
+@-webkit-keyframes titulo_desaparece{
+	from{
+		opacity: 1;
+	}to{
+		opacity: 0;
 	}
 }
 @keyframes titulo_desaparece{
@@ -43,4 +75,34 @@ section h1{
 	}to{
 		opacity: 0;
 	}
+}
+
+/* Dispostivos Menores */
+/* Dispositivos extra small (telefones em modo retrato, com menos de 576px) */
+@media (max-width: 575.98px) { 
+	section:nth-child(2){
+		width: 90%;
+	}
+}
+
+/* Dispositivos small (telefones em modo paisagem, com 576px ou mais)*/
+@media (min-width: 576px) and (max-width: 767.98px) { 
+	section:nth-child(2){
+		width: 90%;
+	}
+}
+
+/* Dispositivos médios (tablets com 768px ou mais)*/
+@media (min-width: 768px) and (max-width: 991.98px) { 
+
+}
+
+/* Dispositivos large (desktops com 992px ou mais)*/
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+
+}
+
+/* Dispositivos extra large (desktops grandes com 1200px ou mais)*/
+@media (min-width: 1200px) { 
+
 }
