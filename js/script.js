@@ -11,14 +11,12 @@ var terraTextura = null;
 var terraGeometria = null;
 var terraMaterial = null;
 var terra = null;
-var nuvens = null;
-var oceanos = null;
-var profundidade = null;
 var luz = null;
 var dirLuz = null;
 //Elementos
 var Section = document.getElementsByTagName('section');
 var Titulo = document.querySelectorAll('section h1');
+var Cep = document.getElementsByName('cep');
 //var carregador = new THREE.GLTFLoader();
 //Constantes
 const ZOOM = 20
@@ -76,12 +74,19 @@ function configuracaoAmbiente(){
 *Data: 11/05/2024
 */
 function configuracao3D(){
-	//Adicionando a Textura para o Planeta Terra 
-	terraTextura = new THREE.TextureLoader().load('img/terra.jpg');//Adiciona a textura da terra
-	terraGeometria = new THREE.SphereGeometry(1, 32, 32);//Adiciona Objeto Redondo
-	terraMaterial = new THREE.MeshBasicMaterial({map: terraTextura});//Adiciona a Textura na Terra
-	terra = new THREE.Mesh(terraGeometria, terraMaterial);//Adicionando gemotetria e material a terra
-	cena.add(terra);//Adicionando a Terra ao cenário
+    // Adicionando a Textura para o Planeta Terra 
+    terraTextura = new THREE.TextureLoader().load('img/terra.jpg'); // Textura da terra
+
+    // Adiciona os materiais com suas respectivas texturas
+    terraMaterial = new THREE.MeshBasicMaterial({map: terraTextura});
+
+    // Adiciona as geometrias
+    terraGeometria = new THREE.SphereGeometry(1.02, 32, 32); // Aumentei o raio para que as texturas não fiquem coladas à esfera
+
+    // Cria os meshes para cada parte do planeta
+    terra = new THREE.Mesh(terraGeometria, terraMaterial);
+    // Adiciona cada parte do planeta à cena
+    cena.add(terra);
 }
 /*
 *Função: configuraLuz()
@@ -147,38 +152,23 @@ function darZoom(nCont){
 		camera.position.z = nCont;
 	}, 55);
 }
-
 /*
-* Função: configuracao3D()
-* Descrição: Responsável por criar, texturizar e modelar o planeta Terra 3D
-* Programador(a): Ighor Drummond
-* Data: 11/05/2024
-FUTURA ATT PARA MAIS DETALHES DE TEXTURA NA TERRA, APENAS ESTOU MANIPULANDO E TESTANDO AINDA
-function configuracao3D(){
-    // Adicionando a Textura para o Planeta Terra 
-    terraTextura = new THREE.TextureLoader().load('img/terra.jpg'); // Textura da terra
-    var nuvensTextura = new THREE.TextureLoader().load('img/nuvens.png'); // Textura das nuvens
-    var oceanosTextura = new THREE.TextureLoader().load('img/oceanos.jpg'); // Textura dos oceanos
-    var profundidadeTextura = new THREE.TextureLoader().load('img/profundidade.jpg'); // Textura de profundidade
-
-    // Adiciona os materiais com suas respectivas texturas
-    var terraMaterial = new THREE.MeshBasicMaterial({map: terraTextura});
-    var nuvensMaterial = new THREE.MeshBasicMaterial({map: nuvensTextura, transparent: true, opacity: 0.4}); // Opacidade ajustável
-    var oceanosMaterial = new THREE.MeshBasicMaterial({map: oceanosTextura});
-    var profundidadeMaterial = new THREE.MeshBasicMaterial({map: profundidadeTextura});
-
-    // Adiciona as geometrias
-    terraGeometria = new THREE.SphereGeometry(1.02, 32, 32); // Aumentei o raio para que as texturas não fiquem coladas à esfera
-    var nuvensGeometria = new THREE.SphereGeometry(1.03, 32, 32);
-    var oceanosGeometria = new THREE.SphereGeometry(1.02, 32, 32);
-    var profundidadeGeometria = new THREE.SphereGeometry(1.02, 32, 32);
-
-    // Cria os meshes para cada parte do planeta
-    terra = new THREE.Mesh(terraGeometria, terraMaterial);
-    var nuvens = new THREE.Mesh(nuvensGeometria, nuvensMaterial);
-    var oceanos = new THREE.Mesh(oceanosGeometria, oceanosMaterial);
-    var profundidade = new THREE.Mesh(profundidadeGeometria, profundidadeMaterial);
-
-    // Adiciona cada parte do planeta à cena
-    cena.add(terra, nuvens, oceanos, profundidade);
-}*/
+*Função: mascaraCep
+*Descrição: Responsavel por colocar um traço divisório entre os dados do cep
+*Programador(a): Ighor Drummond
+*Data: 11/05/2024
+*/
+function mascaraCep(){
+	var Aux = '';
+	
+	if((Cep[0].value).length >= 5 ){
+		for(nCont = 0; nCont <= Cep[0].value.length -1; nCont++){
+			if(nCont === 5){
+				Aux += '-' ;
+			}
+			Aux += Cep[0].value.indexOf(nCont);
+		}
+	}
+	
+	Cep[0].value = Aux;
+}

@@ -8,6 +8,15 @@ main{
 	position: absolute;
 	z-index: 1;
 }
+/* Fontes */
+@font-face {
+	font-family: 'Space Age';
+	src: url('../fonts/space age.ttf');
+}
+@font-face {
+	font-family: 'Caviar Dreams';
+	src: url('../fonts/CaviarDreams.ttf');
+}
 /* Primeira Selection da Página */
 section h1{
 	background-image: -webkit-gradient(linear, left bottom, left top, from(gray), to(#ffff));
@@ -18,6 +27,7 @@ section h1{
 	color: transparent; 
 	-webkit-animation: 5s texto_aparece; 
 	        animation: 5s texto_aparece;
+	font-family: 'Space Age';
 }
 /* Segunda Selection da Página */
 section:nth-child(2){
@@ -36,6 +46,34 @@ section:nth-child(2){
 	padding: 25px;
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
+	font-family: 'Caviar Dreams';
+	font-weight: bold;
+}
+section:nth-child(2) input{
+	background-color: transparent;
+	border: none;
+	border-bottom: 2px solid white;
+	color: white;
+	width: 100%;
+}
+section:nth-child(2) input{
+	margin: 15px 0;
+}
+section:nth-child(2) input::placeholder{
+	color: whitesmoke;
+	font-family: 'Space Age';
+}
+#CampoCep{
+	background-color: white;
+	border-radius: 25px;
+	border: none;
+	padding: 5px;
+	color: black;
+	text-align: center;
+}
+#CampoCep::placeholder{
+	color: black;
+	font-family: 'Space Age';
 }
 /* Quadro 3D */
 #fundo{
@@ -46,7 +84,6 @@ section:nth-child(2){
 }
 
 /* Hover */
-
 /* Animações */
 @-webkit-keyframes texto_aparece{
 	from{
