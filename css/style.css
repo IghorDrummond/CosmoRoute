@@ -38,7 +38,6 @@ section:nth-child(2){
     -webkit-backdrop-filter: blur(55px);
             backdrop-filter: blur(55px);
 	width: 50%;
-	height: 50%;
 	-webkit-animation: 2s texto_aparece;
 	        animation: 2s texto_aparece;
 	color: white;
@@ -69,6 +68,7 @@ section:nth-child(2) input::placeholder{
 	border: none;
 	padding: 5px;
 	color: black;
+	font-weight: bold;
 	text-align: center;
 }
 #CampoCep::placeholder{
