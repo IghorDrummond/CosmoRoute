@@ -64,6 +64,9 @@ section:nth-child(2) input::placeholder{
 	color: whitesmoke;
 	font-family: 'Space Age';
 }
+section input{
+	font-family: arial;
+}
 #CampoCep{
 	background-color: white;
 	border-radius: 25px;
@@ -72,6 +75,7 @@ section:nth-child(2) input::placeholder{
 	color: black;
 	font-weight: bold;
 	text-align: center;
+	font-family: 'Space Age';
 }
 #CampoCep::placeholder{
 	color: black;

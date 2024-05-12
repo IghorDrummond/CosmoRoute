@@ -13,10 +13,12 @@ var terraMaterial = null;
 var terra = null;
 var luz = null;
 var dirLuz = null;
+var jsonHttp = new XMLHttpRequest();
 //Elementos
 var Section = document.getElementsByTagName('section');
 var Titulo = document.querySelectorAll('section h1');
 var Cep = document.getElementById('CampoCep');
+var CamposEnd = document.getElementsByTagName('input');
 //Constantes
 const ZOOM = 20
 
@@ -57,7 +59,32 @@ Cep.addEventListener('keydown', function(event) {
 *Data: 11/05/2024
 */
 Cep.addEventListener('change', function(event) {
-	console.log('Foi');
+	var Aux = '';
+
+	if(Cep.value.length === 9){
+		Aux = Cep.value.replace('-', '');
+		jsonHttp.open('GET', 'https://viacep.com.br/ws/'+ Aux +'/json/');
+
+		jsonHttp.onreadystatechange = ()=>{
+			if(jsonHttp.readyState === 4 && jsonHttp.status < 400){
+				let jsonVal = JSON.parse(jsonHttp.responseText);
+				console.log(jsonVal);
+				if(!jsonVal.hasOwnProperty('erro')){
+					CamposEnd[1].value = 'Endereço: ' + jsonVal.logradouro;
+					CamposEnd[2].value = 'Bairro: ' + jsonVal.bairro;
+					CamposEnd[3].value = 'Cidade: ' + jsonVal.localidade;
+					CamposEnd[4].value = 'UF: ' + jsonVal.uf;
+					CamposEnd[5].value = 'DDD: ' + jsonVal.ddd;
+					CamposEnd[6].value = 'IBGE: ' + jsonVal.ibge;
+					CamposEnd[7].value = 'SIAFI: ' + jsonVal.siafi;
+					CamposEnd[8].value = 'GIA: ' + jsonVal.gia;
+				}else{
+					alert('Nada Encontrado!');
+				}
+			}
+		}
+		jsonHttp.send();
+	}
 });
 //------------------Funções
 /*
@@ -179,13 +206,4 @@ function darZoom(nCont){
 		}
 		camera.position.z = nCont;
 	}, 55);
-}
-/*
-*Função: buscaCep()
-*Descrição: Responsavel por buscar e retornar o cep caso for valido
-*Programador(a): Ighor Drummond
-*Data: 11/05/2024
-*/
-function buscaCep(){
-	console.log('Foi');
 }
