@@ -14,7 +14,8 @@ Além da funcionalidade de busca, o CosmoRoute também oferece uma interface ele
 Em resumo, o CosmoRoute não é apenas um site de busca de endereços. É uma jornada pelo cosmos, onde cada CEP é uma coordenada para explorar novos horizontes. Com sua combinação de tecnologias avançadas e design cativante, o CosmoRoute eleva a busca de endereços a novas alturas, oferecendo uma experiência única e memorável para todos os viajantes digitais.
 </P>
 <blockquote cite="">
-
+	O site se encontra em Desenvolvimento e pode apresentar bugs durante o funcionamento, caso ocorra algo inesperado, por favor, enviei uma mensagme no meu email relatando o caso: ighordrummond2001@gmail.com.
+	<a href=''>Acessar o Site</a>
 </blockquote>
 
 <h4>Desenvolvido pelas Linguangens:</h4>
