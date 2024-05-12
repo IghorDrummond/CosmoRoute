@@ -16,7 +16,6 @@ var dirLuz = null;
 //Elementos
 var Section = document.getElementsByTagName('section');
 var Titulo = document.querySelectorAll('section h1');
-var Cep = document.getElementsByName('cep');
 //var carregador = new THREE.GLTFLoader();
 //Constantes
 const ZOOM = 20
@@ -152,6 +151,13 @@ function darZoom(nCont){
 		camera.position.z = nCont;
 	}, 55);
 }
+//Declarações de Variaveis
+//Elementos
+var Cep = document.getElementsByName('cep');
+//------------------Escopo
+
+//------------------Funçoes
+
 /*
 *Função: mascaraCep()
 *Descrição: Responsavel por colocar um traço divisório entre os dados do cep

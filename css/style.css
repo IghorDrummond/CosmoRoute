@@ -47,6 +47,8 @@ section:nth-child(2){
 	        box-sizing: border-box;
 	font-family: 'Caviar Dreams';
 	font-weight: bold;
+	padding: 10px;
+	box-sizing: border-box;
 }
 section:nth-child(2) input{
 	background-color: transparent;
