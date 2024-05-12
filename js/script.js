@@ -153,7 +153,7 @@ function darZoom(nCont){
 	}, 55);
 }
 /*
-*Função: mascaraCep
+*Função: mascaraCep()
 *Descrição: Responsavel por colocar um traço divisório entre os dados do cep
 *Programador(a): Ighor Drummond
 *Data: 11/05/2024
@@ -169,6 +169,14 @@ function mascaraCep(){
 			Aux += Cep[0].value.indexOf(nCont);
 		}
 	}
-	
 	Cep[0].value = Aux;
+}
+/*
+*Função: buscaCep()
+*Descrição: Responsavel por buscar e retornar o cep caso for valido
+*Programador(a): Ighor Drummond
+*Data: 11/05/2024
+*/
+function buscaCep(){
+	console.log('Foi');
 }
