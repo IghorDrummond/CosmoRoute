@@ -1,7 +1,7 @@
 <H1>🌟 Apresento com alegria o projeto CosmoRoute! 🚀 </H1>
 <img src="img/Logo.png" alt="Logo do Projeto" width="100" height="100" align="center">
 <P>
-<strong></strong>CosmoRoute: Navegando pelo Universo com Apenas um CEP</strong>
+<strong>CosmoRoute: Navegando pelo Universo com Apenas um CEP</strong>
 
 CosmoRoute é uma inovação revolucionária que torna a busca de endereços uma experiência celestial. Desenvolvido com tecnologias de ponta como JavaScript, AJAX, Bootstrap e CSS, este site oferece uma maneira intuitiva e emocionante de encontrar seu destino apenas digitando um CEP.
 
