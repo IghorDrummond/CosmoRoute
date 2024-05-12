@@ -16,7 +16,7 @@ var dirLuz = null;
 //Elementos
 var Section = document.getElementsByTagName('section');
 var Titulo = document.querySelectorAll('section h1');
-//var carregador = new THREE.GLTFLoader();
+var Cep = document.getElementById('CampoCep');
 //Constantes
 const ZOOM = 20
 
@@ -30,6 +30,35 @@ var Z = setTimeout(function(){
 	clearTimeout(Z);
 	introducao();//Inicia a Introdução da Página ao ser carregada
 }, 5000);
+//------------------Eventos
+/*
+*Evento: mascaraCep()
+*Descrição: Responsavel por colocar um traço divisório entre os dados do cep
+*Programador(a): Ighor Drummond
+*Data: 11/05/2024
+*/
+Cep.addEventListener('keydown', function(event) {
+	var Aux = '';
+	
+	if(Cep.value.length >= 5 ){
+		for(let nCont = 0; nCont <= Cep.value.length -1; nCont++){
+			if(nCont === 5 && Cep.value.substr(nCont,1) != '-'){
+				Aux += '-' ;
+			}
+			Aux += Cep.value.substr(nCont,1);
+		}
+		Cep.value = Aux;
+	}
+});
+/*
+*Evento: buscaCep()
+*Descrição: Responsavel por buscar e retornar o cep caso for valido
+*Programador(a): Ighor Drummond
+*Data: 11/05/2024
+*/
+Cep.addEventListener('change', function(event) {
+	console.log('Foi');
+});
 //------------------Funções
 /*
 *Função: configuraInicial()
@@ -150,32 +179,6 @@ function darZoom(nCont){
 		}
 		camera.position.z = nCont;
 	}, 55);
-}
-//Declarações de Variaveis
-//Elementos
-var Cep = document.getElementsByName('cep');
-//------------------Escopo
-
-//------------------Funçoes
-
-/*
-*Função: mascaraCep()
-*Descrição: Responsavel por colocar um traço divisório entre os dados do cep
-*Programador(a): Ighor Drummond
-*Data: 11/05/2024
-*/
-function mascaraCep(){
-	var Aux = '';
-	
-	if((Cep[0].value).length >= 5 ){
-		for(nCont = 0; nCont <= Cep[0].value.length -1; nCont++){
-			if(nCont === 5){
-				Aux += '-' ;
-			}
-			Aux += Cep[0].value.indexOf(nCont);
-		}
-	}
-	Cep[0].value = Aux;
 }
 /*
 *Função: buscaCep()
