@@ -25,8 +25,6 @@ var Cep = document.getElementById('CampoCep');
 var CamposEnd = document.getElementsByTagName('input');
 var Main = document.getElementsByTagName('main');
 var Voltar = document.getElementsByTagName('button');
-//Booleano
-var luaRotaciona = true;
 //Constantes
 const ZOOM = 20
 
@@ -226,9 +224,6 @@ function animaTerra(){
 	requestAnimationFrame(animaTerra);
 	// Girando o planeta Terra lentamente
 	terra.rotation.y += 0.001;
-	if(luaRotaciona=== false){
-		cena.remove(lua);
-	}
 	renderizacao.render(cena, camera);//Renderiza todos os dados fornecidos ao quadro 3d
 }
 /*
