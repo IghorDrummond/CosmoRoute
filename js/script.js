@@ -89,9 +89,22 @@ Cep.addEventListener('change', function(event) {
 					Section[1].style.animation = '1s titulo_desaparece';
 					var X = setTimeout(()=>{
 						Section[1].style.display = 'none';
-						erroCep();
+						erro('O CEP digitado não existe! Por favor, insira um válido novamente.');
 					}, 1000);
 				}
+			}else if(jsonHttp.status >= 400 && jsonHttp.status <= 499){
+				Section[1].style.animation = '1s titulo_desaparece';
+				var X = setTimeout(()=>{
+					Section[1].style.display = 'none';
+					erro('Houve um problema de conexão do seu lado. Por favor, tente novamente mais tarde. Erro: ' + jsonHttp.status.toString());
+				}, 1000);				
+			}
+			else if(jsonHttp.status >= 500 && jsonHttp.status <= 599){
+				Section[1].style.animation = '1s titulo_desaparece';
+				var X = setTimeout(()=>{
+					Section[1].style.display = 'none';
+					erro('Houve um problema que está no servidor. Estamos trabalhando para corrigi-lo o mais breve possível. Erro: ' + jsonHttp.status.toString());
+				}, 1000);				
 			}
 		}
 		jsonHttp.send();
@@ -114,6 +127,8 @@ Voltar[0].addEventListener('click', function(event) {
 			camera.position.x = nCont;
 		}
 		else{
+			Section[1].style.animation = '2s titulo_aparece';
+			Section[1].style.display = 'block';
 			clearInterval(P);		
 		}
 		//Remove a Lua da Cena
@@ -123,6 +138,7 @@ Voltar[0].addEventListener('click', function(event) {
 			//renderiza o quadro sem a lua
 			renderizacao.render(cena, camera);
 		}
+		console.log(nCont);
 		nCont -= 0.1;
 	},25);
 });
@@ -267,7 +283,7 @@ function darZoom(nCont){
 *Programador(a): Ighor Drummond
 *Data: 12/05/2024
 */
-function erroCep(){
+function erro(error){
 	/*Cria o Elemento Lua */
     // Adicionando a Textura para o Planeta Terra 
     luaTextura = new THREE.TextureLoader().load('img/lua.jpg'); // Textura da terra
@@ -289,6 +305,8 @@ function erroCep(){
 	animaLua();//Adiciona a Lua no quadro 3D
 	renderizacao.render(cena, camera);//Renderiza todos os dados fornecidos ao quadro 3d
 	zoomLua();//Desloca a Camera para a Lua
+	//Adiciona a Mensagem de Erro passada por parametro
+	Section[2].getElementsByTagName('p')[0].innerText = error;
 }
 /*
 *Função: zoomLua()
