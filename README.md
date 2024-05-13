@@ -14,7 +14,7 @@ Além da funcionalidade de busca, o CosmoRoute também oferece uma interface ele
 Em resumo, o CosmoRoute não é apenas um site de busca de endereços. É uma jornada pelo cosmos, onde cada CEP é uma coordenada para explorar novos horizontes. Com sua combinação de tecnologias avançadas e design cativante, o CosmoRoute eleva a busca de endereços a novas alturas, oferecendo uma experiência única e memorável para todos os viajantes digitais.
 </P>
 <blockquote cite="">
-	O site está em desenvolvimento e pode apresentar alguns bugs durante o seu funcionamento. Se algo inesperado acontecer, por favor, envie uma mensagem para o meu e-mail relatando o problema: ighordrummond2001@gmail.com. A sua colaboração é muito importante para melhorarmos a experiência de todos os usuários. Obrigado pela compreensão!
+O aguardado momento chegou! O CosmoRoute está oficialmente pronto para receber você! Explore o vasto cosmos, mergulhe em informações sobre planetas, estrelas e galáxias, e deixe-se envolver pela imensidão do universo. Navegue por uma experiência imersiva e educativa, onde você poderá aprender sobre a história do espaço, descobrir curiosidades fascinantes e contemplar belíssimas imagens cósmicas. Esteja preparado para uma jornada extraordinária pelos confins do universo! Acesse agora o CosmoRoute e embarque nessa aventura cósmica sem igual! 🌌✨
 	<a href='https://ighordrummond.github.io/CosmoRoute/'>Acessar o Site</a>
 </blockquote>
 
