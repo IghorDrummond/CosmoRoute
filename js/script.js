@@ -133,12 +133,13 @@ Voltar[0].addEventListener('click', function(event) {
 		}
 		//Remove a Lua da Cena
 		if(parseInt(nCont) === 2){
+            // Desliga a Animação da Lua
+            cancelAnimationFrame(animaLua);
 			//Remover a Lua do cenário
 			cena.remove(lua);
 			//renderiza o quadro sem a lua
 			renderizacao.render(cena, camera);
 		}
-		console.log(nCont);
 		nCont -= 0.1;
 	},25);
 });
