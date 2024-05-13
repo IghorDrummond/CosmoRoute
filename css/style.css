@@ -144,11 +144,17 @@ section:nth-child(3){
 	section:nth-child(2){
 		width: 90%;
 	}
+	section:nth-child(3){
+		width: 90%;
+	}
 }
 
 /* Dispositivos small (telefones em modo paisagem, com 576px ou mais)*/
 @media (min-width: 576px) and (max-width: 767.98px) { 
 	section:nth-child(2){
+		width: 90%;
+	}
+	section:nth-child(3){
 		width: 90%;
 	}
 }
