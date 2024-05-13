@@ -12,6 +12,10 @@ var terraGeometria = null;
 var terraMaterial = null;
 var terra = null;
 var luz = null;
+var lua = null;
+var luaGeometria = null;
+var luaMaterial = null
+var luaTextura = null;
 var dirLuz = null;
 var jsonHttp = new XMLHttpRequest();
 //Elementos
@@ -19,6 +23,10 @@ var Section = document.getElementsByTagName('section');
 var Titulo = document.querySelectorAll('section h1');
 var Cep = document.getElementById('CampoCep');
 var CamposEnd = document.getElementsByTagName('input');
+var Main = document.getElementsByTagName('main');
+var Voltar = document.getElementsByTagName('button');
+//Booleano
+var luaRotaciona = true;
 //Constantes
 const ZOOM = 20
 
@@ -68,7 +76,6 @@ Cep.addEventListener('change', function(event) {
 		jsonHttp.onreadystatechange = ()=>{
 			if(jsonHttp.readyState === 4 && jsonHttp.status < 400){
 				let jsonVal = JSON.parse(jsonHttp.responseText);
-				console.log(jsonVal);
 				if(!jsonVal.hasOwnProperty('erro')){
 					CamposEnd[1].value = 'Endereço: ' + jsonVal.logradouro;
 					CamposEnd[2].value = 'Bairro: ' + jsonVal.bairro;
@@ -79,12 +86,45 @@ Cep.addEventListener('change', function(event) {
 					CamposEnd[7].value = 'SIAFI: ' + jsonVal.siafi;
 					CamposEnd[8].value = 'GIA: ' + jsonVal.gia;
 				}else{
-					alert('Nada Encontrado!');
+					Section[1].style.animation = '1s titulo_desaparece';
+					var X = setTimeout(()=>{
+						Section[1].style.display = 'none';
+						erroCep();
+					}, 1000);
 				}
 			}
 		}
 		jsonHttp.send();
 	}
+});
+/*
+*Evento: voltaTerra()
+*Descrição: Responsavel por retorna na aba de buscas além de deletar a lua do cenário
+*Programador(a): Ighor Drummond
+*Data: 11/05/2024
+*/
+Voltar[0].addEventListener('click', function(event) {
+	var nCont = 5;
+	//Volta padrão para os elementos
+	Main[0].classList.remove("p-2");
+	Section[2].style.display = 'none';
+
+	var P = setInterval(()=>{
+		if(nCont >= 0){
+			camera.position.x = nCont;
+		}
+		else{
+			clearInterval(P);		
+		}
+		//Remove a Lua da Cena
+		if(parseInt(nCont) === 2){
+			//Remover a Lua do cenário
+			cena.remove(lua);
+			//renderiza o quadro sem a lua
+			renderizacao.render(cena, camera);
+		}
+		nCont -= 0.1;
+	},25);
 });
 //------------------Funções
 /*
@@ -169,7 +209,21 @@ function animaTerra(){
 	requestAnimationFrame(animaTerra);
 	// Girando o planeta Terra lentamente
 	terra.rotation.y += 0.001;
+	if(luaRotaciona=== false){
+		cena.remove(lua);
+	}
 	renderizacao.render(cena, camera);//Renderiza todos os dados fornecidos ao quadro 3d
+}
+/*
+*Função: animaLua()
+*Descrição: Rotaciona a Lua no Eixo Y
+*Programador(a): Ighor Drummond
+*Data: 12/05/2024
+*/
+function animaLua(){
+	requestAnimationFrame(animaLua);
+	// Girando a lua lentamente
+	lua.rotation.y += 0.001;
 }
 /*
 *Função: introducao()
@@ -206,4 +260,54 @@ function darZoom(nCont){
 		}
 		camera.position.z = nCont;
 	}, 55);
+}
+/*
+*Função: erroCep()
+*Descrição: Responsavel por movimentar a camera para o lua
+*Programador(a): Ighor Drummond
+*Data: 12/05/2024
+*/
+function erroCep(){
+	/*Cria o Elemento Lua */
+    // Adicionando a Textura para o Planeta Terra 
+    luaTextura = new THREE.TextureLoader().load('img/lua.jpg'); // Textura da terra
+
+    // Adiciona os materiais com suas respectivas texturas
+    luaMaterial = new THREE.MeshBasicMaterial({map: luaTextura});
+
+    // Adiciona as geometrias
+    luaGeometria = new THREE.SphereGeometry(0.3, 32, 32); // Aumentei o raio para que as texturas não fiquem coladas à esfera
+
+    // Cria os meshes para cada parte do planeta
+    lua = new THREE.Mesh(luaGeometria, luaMaterial);
+
+	// Define a posição da Lua em relação à Terra
+	lua.position.set(5, 0, 0); // Exemplo: posicione a Lua 5 unidades à direita da Terra
+	//camera.position.z = 20;
+    // Adiciona cada parte do planeta à cena
+    cena.add(lua);
+	animaLua();//Adiciona a Lua no quadro 3D
+	renderizacao.render(cena, camera);//Renderiza todos os dados fornecidos ao quadro 3d
+	zoomLua();//Desloca a Camera para a Lua
+}
+/*
+*Função: zoomLua()
+*Descrição: Responsavel por o zoom na lua
+*Programador(a): Ighor Drummond
+*Data: 12/05/2024
+*/
+function zoomLua(){
+	var nCont = 0;//Posição X inicial de 0;
+
+	var U = setInterval(()=>{
+
+		if(nCont <= 5){
+			camera.position.x = nCont;
+		}else{
+			Main[0].classList.add("p-2");
+			Section[2].style.display = 'block';
+			clearInterval(U);		
+		}
+		nCont += 0.1;
+	},25);
 }

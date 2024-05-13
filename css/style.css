@@ -64,9 +64,6 @@ section:nth-child(2) input::placeholder{
 	color: whitesmoke;
 	font-family: 'Space Age';
 }
-section input{
-	font-family: arial;
-}
 #CampoCep{
 	background-color: white;
 	border-radius: 25px;
@@ -75,11 +72,32 @@ section input{
 	color: black;
 	font-weight: bold;
 	text-align: center;
-	font-family: 'Space Age';
 }
 #CampoCep::placeholder{
 	color: black;
 	font-family: 'Space Age';
+}
+/* Terceira Selection da Página */
+section:nth-child(3){
+	display: none;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    -webkit-backdrop-filter: blur(55px);
+            backdrop-filter: blur(55px);
+	width: 50%;
+	-webkit-animation: 2s texto_aparece;
+	        animation: 2s texto_aparece;
+	color: white;
+	text-align: center;
+	padding: 25px;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	font-family: 'Caviar Dreams';
+	font-weight: bold;
+	padding: 10px;
+	box-sizing: border-box;
+	align-items: top;
 }
 /* Quadro 3D */
 #fundo{
