@@ -22,8 +22,8 @@ h1{
 }
 /* Primeira Selection da Página */
 section h1{
-	background-image: -webkit-gradient(linear, left bottom, left top, from(gray), to(#ffff));
 	background-image: -o-linear-gradient(bottom, gray, #ffff);
+	background-image: -webkit-gradient(linear, left bottom, left top, from(gray), to(#ffff));
 	background-image: linear-gradient(to top, gray, #ffff); 
 	background-clip: text;
 	-webkit-background-clip: text; 
@@ -43,6 +43,22 @@ section:nth-child(2) input{
 section:nth-child(2) input{
 	margin: 15px 0;
 }
+section:nth-child(2) input::-webkit-input-placeholder{
+	color: whitesmoke;
+	font-family: 'Space Age';
+}
+section:nth-child(2) input::-moz-placeholder{
+	color: whitesmoke;
+	font-family: 'Space Age';
+}
+section:nth-child(2) input:-ms-input-placeholder{
+	color: whitesmoke;
+	font-family: 'Space Age';
+}
+section:nth-child(2) input::-ms-input-placeholder{
+	color: whitesmoke;
+	font-family: 'Space Age';
+}
 section:nth-child(2) input::placeholder{
 	color: whitesmoke;
 	font-family: 'Space Age';
@@ -56,9 +72,20 @@ section:nth-child(2) input::placeholder{
 	font-weight: bold;
 	text-align: center;
 }
+#CampoCep::-webkit-input-placeholder{
+	color: black;
+}
+#CampoCep::-moz-placeholder{
+	color: black;
+}
+#CampoCep:-ms-input-placeholder{
+	color: black;
+}
+#CampoCep::-ms-input-placeholder{
+	color: black;
+}
 #CampoCep::placeholder{
 	color: black;
-	font-family: 'Space Age';
 }
 
 /* Configuração Geral */
