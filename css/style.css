@@ -158,6 +158,9 @@ section:nth-child(3)
 	{
 		width: 90% !important;
 	}
+	section:nth-child(2) input{
+		margin: 8px 0;
+	}
 	h1{
 		font-size: 1.5em;
 	}
@@ -169,6 +172,9 @@ section:nth-child(3)
 	section:nth-child(3)
 	{
 		width: 90% !important;
+	}
+	section:nth-child(2) input{
+		margin: 8px 0;
 	}
 	h1{
 		font-size: 1.5em;
