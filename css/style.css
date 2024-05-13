@@ -8,6 +8,9 @@ main{
 	position: absolute;
 	z-index: 1;
 }
+h1{
+	font-size: 1.5em;
+}
 /* Fontes */
 @font-face {
 	font-family: 'Space Age';
@@ -147,6 +150,9 @@ section:nth-child(3){
 	section:nth-child(3){
 		width: 90%;
 	}
+	h1{
+		font-size: 1.5em;
+	}
 }
 
 /* Dispositivos small (telefones em modo paisagem, com 576px ou mais)*/
@@ -156,6 +162,9 @@ section:nth-child(3){
 	}
 	section:nth-child(3){
 		width: 90%;
+	}
+	h1{
+		font-size: 1.5em;
 	}
 }
 
