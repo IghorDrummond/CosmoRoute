@@ -9,7 +9,7 @@ main{
 	z-index: 1;
 }
 h1{
-	font-size: 1.5em;
+	font-size: 4em;
 }
 /* Fontes */
 @font-face {
@@ -33,26 +33,6 @@ section h1{
 	font-family: 'Space Age';
 }
 /* Segunda Selection da Página */
-section:nth-child(2){
-	display: none;
-    background-color: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 20px;
-    -webkit-backdrop-filter: blur(55px);
-            backdrop-filter: blur(55px);
-	width: 50%;
-	-webkit-animation: 2s texto_aparece;
-	        animation: 2s texto_aparece;
-	color: white;
-	text-align: center;
-	padding: 25px;
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
-	font-family: 'Caviar Dreams';
-	font-weight: bold;
-	padding: 10px;
-	box-sizing: border-box;
-}
 section:nth-child(2) input{
 	background-color: transparent;
 	border: none;
@@ -80,8 +60,11 @@ section:nth-child(2) input::placeholder{
 	color: black;
 	font-family: 'Space Age';
 }
-/* Terceira Selection da Página */
-section:nth-child(3){
+
+/* Configuração Geral */
+section:nth-child(2),
+section:nth-child(3)
+{
 	display: none;
     background-color: transparent;
     border: 2px solid rgba(255, 255, 255, 0.5);
@@ -100,7 +83,6 @@ section:nth-child(3){
 	font-weight: bold;
 	padding: 10px;
 	box-sizing: border-box;
-	align-items: top;
 }
 /* Quadro 3D */
 #fundo{
@@ -144,11 +126,10 @@ section:nth-child(3){
 /* Dispostivos Menores */
 /* Dispositivos extra small (telefones em modo retrato, com menos de 576px) */
 @media (max-width: 575.98px) { 
-	section:nth-child(2){
-		width: 90%;
-	}
-	section:nth-child(3){
-		width: 90%;
+	section:nth-child(2),
+	section:nth-child(3)
+	{
+		width: 90% !important;
 	}
 	h1{
 		font-size: 1.5em;
@@ -157,11 +138,10 @@ section:nth-child(3){
 
 /* Dispositivos small (telefones em modo paisagem, com 576px ou mais)*/
 @media (min-width: 576px) and (max-width: 767.98px) { 
-	section:nth-child(2){
-		width: 90%;
-	}
-	section:nth-child(3){
-		width: 90%;
+	section:nth-child(2),
+	section:nth-child(3)
+	{
+		width: 90% !important;
 	}
 	h1{
 		font-size: 1.5em;
